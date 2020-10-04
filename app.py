@@ -17,16 +17,16 @@ def index_page():
     return render_template('index.html')
 
 # *****************************
-# RESTFUL TODOS JSON API
+# RESTFUL SPACE RESOURCES JSON API
 # *****************************
 @app.route('/api/resources')
-def list_todos():
+def list_resources():
     """Returns JSON w/ all resources"""
     all_resources = [resource.serialize() for resource in Resource.query.all()]
     return jsonify(resources=all_resources)
 
-@app.route('/api/todos', methods=["POST"])
-def create_todo():
+@app.route('/api/resources', methods=["POST"])
+def create_resource():
     """Creates a new todo and returns JSON of that created todo"""
     new_resource = Resource(name = request.json["name"], 
                 url = request.json["name"],
