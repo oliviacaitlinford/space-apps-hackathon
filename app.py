@@ -29,13 +29,13 @@ def list_resources():
 def create_resource():
     """Creates a new todo and returns JSON of that created todo"""
     new_resource = Resource(name = request.json["name"], 
-                url = request.json["name"],
-                description = request.json["name"],
-                login_required = request.json["name"],
-                api_available = request.json["name"],
-                country_of_origin = request.json["name"],
-                documentation_url = request.json["name"],
-                keywords = request.json["name"])
+                url = request.json["url"],
+                description = request.json["description"],
+                login_required = request.json["login_required"],
+                api_available = request.json["api_available"],
+                country_of_origin = request.json["country_of_origin"],
+                documentation_url = request.json["documentation_url"],
+                keywords = request.json["keywords"])
     db.session.add(new_resource)
     db.session.commit()
     response_json = jsonify(resource=new_resource.serialize())
