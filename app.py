@@ -3,11 +3,13 @@
 from flask import Flask, request, jsonify, render_template
 from models import db, connect_db, Resource
 
+import os
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///space_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = "oh-so-secret"
+os.environ.get("SECRET_KEY", SECRET_KEY)
 
 connect_db(app)
 
